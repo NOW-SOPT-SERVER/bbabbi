@@ -301,7 +301,7 @@ enum Ensemble {
 스프링 빈을 관리하는 건? 스프링 컨테이너.  
 따라서, 가장 처음에는 스프링 컨테이너가 만들어진다.
 
-![img.png](img.png)
+![스크린샷 2024-04-16 오전 5.38.43.png](..%2F..%2F..%2F..%2F..%2F..%2F..%2Fvar%2Ffolders%2F56%2F50f_9k894hd7d0th8fdftvt40000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_iyvxg0%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202024-04-16%20%EC%98%A4%EC%A0%84%205.38.43.png)
 (이미지출처 : [#4-1])
 
 > 스프링 컨테이너 생성 -> 스프링 빈 생성 -> 의존관계 주입 -> 초기화 콜백 -> 사용 -> 소멸 전 콜백 -> 스프링 종료  
@@ -518,7 +518,7 @@ public class HelloController {
 [#4-3]: https://velog.io/@destiny1616/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%B9%88-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0  
 
 **5️⃣6️⃣7️⃣어노테이션 정리**  
-🔗  [#1] 블로그 - sssungjin.log(@RequiredArgsConstructor란?)
+🔗  [#1] 블로그 - sssungjin.log(@RequiredArgsConstructor란?)  
 🔗  [#2] 블로그 - code-10.log(롬복 @All/NoArgsConstructor 제대로 알고 사용해보자)  
 🔗  [#3] 블로그 - 멍토의 IT 블로그(@RequestMapping이란?)
 
