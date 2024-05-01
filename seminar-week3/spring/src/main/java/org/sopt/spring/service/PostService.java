@@ -13,6 +13,9 @@ import org.sopt.spring.service.dto.PostCreateRequest;
 import org.sopt.spring.service.dto.PostFindDto;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class PostService {
@@ -36,6 +39,12 @@ public class PostService {
         return PostFindDto.of(postRepository.findById(postId).orElseThrow(
                 () -> new NotFoundException(ErrorMessage.POST_NOT_FOUND)
         ));
+    }
+
+    public List<PostFindDto> getAllPosts(){
+        return postRepository.findAll().stream()
+                .map(PostFindDto::of)
+                .collect(Collectors.toList());
     }
 
 }
