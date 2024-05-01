@@ -20,8 +20,6 @@ public class PostService {
     private final BlogService blogService;
     private final MemberService memberService;
 
-    private final PostFindDto postFindDto;
-
     public String create(Long blogId, PostCreateRequest postCreateRequest){
         Blog blog = blogService.findById(blogId);
         Post post = postRepository.save(Post.create(blog, postCreateRequest));
@@ -34,9 +32,9 @@ public class PostService {
         );
     }
 
-    public MemberFindDto findPostById(Long memberId) {
-        return postFindDto.of(postRepository.findById(postId).orElseThrow(
-                () -> new EntityNotFoundException(ErrorMessage.POST_NOT_FOUND)
+    public PostFindDto findPostById(Long postId) {
+        return PostFindDto.of(postRepository.findById(postId).orElseThrow(
+                () -> new NotFoundException(ErrorMessage.POST_NOT_FOUND)
         ));
     }
 

@@ -1,7 +1,6 @@
 package org.sopt.spring.service.dto;
 
 import org.sopt.spring.domain.Blog;
-import org.sopt.spring.domain.Member;
 import org.sopt.spring.domain.Post;
 
 public record PostFindDto (

@@ -18,11 +18,10 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
 
     private final PostService postService;
-    private final MemberService memberService;
 
     @PostMapping("/post")
     public ResponseEntity<SuccessStatusResponse> createPost(
-            @RequestHeader Long memberId,
+//            @RequestHeader Long memberId,
             @RequestHeader Long blogId,
             @Valid @RequestBody PostCreateRequest postCreateRequest
     ) {
@@ -33,11 +32,10 @@ public class PostController {
     }
 
     @GetMapping("/post/{postId}")
-    public ResponseEntity<SuccessStatusResponse<PostFindDto>> findPostById(@PathVariable Long postId){
-        PostFindDto postFindDto = postService.findById(postId);
-        return ResponseEntity.ok(
-                SuccessStatusResponse.of(SuccessMessage.POST_FIND_SUCCESS, postFindDto)
-        );
+    public ResponseEntity<SuccessStatusResponse<PostFindDto>> findPostById(@PathVariable Long postId) {
+        PostFindDto postFindDto = postService.findPostById(postId);
+        SuccessStatusResponse<PostFindDto> response = SuccessStatusResponse.of(SuccessMessage.POST_FIND_SUCCESS, postFindDto);
+        return ResponseEntity.ok(response);
     }
 
 }

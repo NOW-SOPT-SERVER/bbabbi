@@ -1,7 +1,9 @@
 package org.sopt.spring.service.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 public record PostCreateRequest (
-        String title,
-        String content
+        @NotBlank String title,
+        @NotBlank String content
 ) {
 }
