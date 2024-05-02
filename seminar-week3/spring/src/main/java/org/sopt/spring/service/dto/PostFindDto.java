@@ -6,9 +6,9 @@ import org.sopt.spring.domain.Post;
 public record PostFindDto (
         String title,
         String content,
-        Blog blog
+        Long id
 ){
     public static PostFindDto of(Post post) {
-        return new PostFindDto(post.getTitle(), post.getContent(), post.getBlog());
+        return new PostFindDto(post.getTitle(), post.getContent(), post.getId());
     }
 }

@@ -1,5 +1,6 @@
 package org.sopt.spring.controller;
 
+import com.sun.net.httpserver.Authenticator;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.sopt.spring.common.dto.SuccessMessage;
@@ -27,24 +28,23 @@ public class PostController {
             @Valid @RequestBody PostCreateRequest postCreateRequest
     ) {
         return ResponseEntity.status(HttpStatus.CREATED).header(
-                "Location",
-                        postService.create(blogId, postCreateRequest))
+                "Location", postService.create(blogId, postCreateRequest))
                 .body(SuccessStatusResponse.of(SuccessMessage.POST_CREATE_SUCCESS));
     }
 
     // 전체 게시글
     @GetMapping("/post")
     public ResponseEntity<List<PostFindDto>> getAllPosts(){
-        List<PostFindDto> members = postService.getAllPosts();
-        return ResponseEntity.ok(members);
+        List<PostFindDto> posts = postService.getAllPosts();
+        return ResponseEntity.ok(posts);
     }
 
     // 특정 게시글
     @GetMapping("/post/{postId}")
     public ResponseEntity<SuccessStatusResponse<PostFindDto>> findPostById(@PathVariable Long postId) {
-        PostFindDto postFindDto = postService.findPostById(postId);
-        SuccessStatusResponse<PostFindDto> response = SuccessStatusResponse.of(SuccessMessage.POST_FIND_SUCCESS, postFindDto);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok()
+                .body(SuccessStatusResponse.of(SuccessMessage.POST_FIND_SUCCESS,
+                        postService.findPostById(postId)));
     }
 
 }
