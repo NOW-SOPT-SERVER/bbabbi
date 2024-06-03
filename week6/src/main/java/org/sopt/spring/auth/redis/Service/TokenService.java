@@ -32,6 +32,15 @@ public class TokenService {
     }
 
     @Transactional
+    public String generateRefreshToken(Long userId) {
+        String refreshToken = jwtTokenProvider.issueRefreshToken(
+                UserAuthentication.createUserAuthentication(userId)
+        );
+        saveRefreshToken(userId, refreshToken);
+        return refreshToken;
+    }
+
+    @Transactional
     public void deleteRefreshToken(
             final Long userId
     ) {
@@ -51,15 +60,10 @@ public class TokenService {
         return token.getId();
     }
 
-    protected String generateAccessToken(Long userId) {
+    public String generateAccessToken(Long userId) {
         return jwtTokenProvider.issueAccessToken(
                 UserAuthentication.createUserAuthentication(userId)
         );
     }
 
-    protected String generateRefreshToken(Long userId) {
-        return jwtTokenProvider.issueRefreshToken(
-                UserAuthentication.createUserAuthentication(userId)
-        );
-    }
 }
