@@ -2,8 +2,8 @@ package org.sopt.spring.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.sopt.spring.auth.redis.Service.TokenService;
-import org.sopt.spring.auth.redis.repository.TokenRepository;
 import org.sopt.spring.common.dto.ErrorMessage;
 import org.sopt.spring.common.jwt.JwtTokenProvider;
 import org.sopt.spring.auth.UserAuthentication;
@@ -16,6 +16,8 @@ import org.sopt.spring.service.dto.UserJoinResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class MemberService {
